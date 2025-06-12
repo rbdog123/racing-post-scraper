@@ -1,8 +1,8 @@
 name: Scrape Racing Post
 on:
   schedule:
-    - cron: '*/5 * * * *'  # Runs every 5 minutes
-  workflow_dispatch:       # Allows manual triggering
+    - cron: '*/15 * * * *'
+  workflow_dispatch:
 
 jobs:
   scrape:
@@ -17,7 +17,9 @@ jobs:
           cache: 'npm'
           
       - name: Install dependencies
-        run: npm install
+        run: |
+          npm install
+          npm audit fix
       
       - name: Run scraper
         run: npm start
@@ -27,5 +29,5 @@ jobs:
           git config --global user.name "GitHub Actions"
           git config --global user.email "actions@github.com"
           git add .
-          git diff --quiet && git diff --staged --quiet || git commit -m "Update scraped data"
+          git diff --quiet && git diff --staged --quiet || git commit -m "Update scraped data [skip ci]"
           git push
