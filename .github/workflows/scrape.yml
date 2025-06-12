@@ -29,3 +29,4 @@ jobs:
           git add data/results.json
           git diff --quiet && git diff --staged --quiet || git commit -m "Update scraped data"
           git push
+          
