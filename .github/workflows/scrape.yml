@@ -1,0 +1,7 @@
+racing-post-scraper/
+├── .github/
+│   └── workflows/
+│       └── scrape.yml    # GitHub Actions workflow
+├── scraper.js           # Main Puppeteer script
+└── data/                # (Will be created automatically)
+    └── results.json     # Scraped data
